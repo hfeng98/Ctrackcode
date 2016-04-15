@@ -26,8 +26,10 @@ public class Main {
 
 private static Map<BufferedImage, String> trainMap = null;
 	
-	
-	 public final static String srcPath = new File("").getAbsolutePath()+"\\srcimg\\";
+	//保存验证码的地址
+//	 public final static String srcPath = new File("").getAbsolutePath()+"\\srcimg\\";
+	 public final static String srcPath = new File("").getAbsolutePath();
+	 //训练的地址，里面有一些识别好的验证码数字图
 	 public final static String trainPath = new File("").getAbsolutePath()+"\\trainimg\\";
 		
 	/**
@@ -169,11 +171,13 @@ private static Map<BufferedImage, String> trainMap = null;
 	 * @param args
 	 * @throws Exception
 	 */
-	public static void main(String[] args) throws Exception {
+	public static String main() throws Exception {
 		System.out.println(trainPath);
+		//获取验证码地址和保存验证图片的名字
 		String pic=downloadImage("http://jwgl.gdut.edu.cn/CheckCode.aspx", "130103021125.png");
 		String text = getAllOcr(pic);
 		System.out.println("验证码是："+text);
+		return text;
 
 	}
 }
